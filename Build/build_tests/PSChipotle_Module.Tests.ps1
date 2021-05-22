@@ -1,10 +1,14 @@
-#Requires -Modules @{ModuleName="Pester";ModuleVersion="5.0.0"}
-$script:ThisRoot = Split-Path $PSScriptRoot -Parent
-Remove-Module PSChipotle -ErrorAction SilentlyContinue
-Import-Module ([System.IO.Path]::Combine($script:ThisRoot, 'PSChipotle.psd1')) -Force
+BeforeDiscovery {
+    #Requires -Modules @{ModuleName="Pester";ModuleVersion="5.1.0"}
+    $script:ThisRoot = Split-Path $PSScriptRoot -Parent
+    Remove-Module PSChipotle -ErrorAction SilentlyContinue
+    Import-Module (Join-Path $script:ThisRoot 'PSChipotle.psd1') -Force
+}
 Describe "PSChipotle Module" {
-    It "Imports Successfully" {
-        Get-Module PSChipotle | Should -Not -BeNullOrEmpty
+    Context 'Module' {
+        It "Imports Successfully" {
+            Get-Module PSChipotle | Should -Not -BeNullOrEmpty
+        }
     }
     Context 'Functions' {
         # It 'All: should import successfully' {
@@ -17,7 +21,7 @@ Describe "PSChipotle Module" {
         # }
 
         It "Should be valid PowerShell code" {
-            $FileContent = Get-Content (Join-Path $script:ThisRoot 'PSChipotle.psm1') -ErrorAction Stop
+            $FileContent = Get-Content -Path (Join-Path $script:ThisRoot 'PSChipotle.psm1')
             $Errors = $null
             $null = [System.Management.Automation.PSParser]::Tokenize($FileContent, [ref]$errors)
             $errors.Count | Should -be 0

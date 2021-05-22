@@ -252,7 +252,7 @@ Function Get-LatestChangeLogSection() {
         $VersionHeading = '## v'
         $LatestChangeLogVersion = (($FileContent | Select-String -Pattern $VersionHeading)[0] -Split 'v')[-1]
 
-        #Only grab the latest changelog section if it's actually relevant to the version being published.
+        #Only grab the latest changelog section if its actually relevant to the version being published.
         If ($LatestChangeLogVersion -eq $Version) {
             $TerminateFileContentLine = (($FileContent | Select-String -Pattern $VersionHeading)[1].LineNumber) - 2
             $FileContent[0..$TerminateFileContentLine] | Out-String
