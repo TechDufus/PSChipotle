@@ -5,6 +5,8 @@
 
 .DESCRIPTION
 
+.EXAMPLE
+    Some Syntax Here
 .NOTES
     Author: matthewjdegarmo
     GitHub: https://github.com/matthewjdegarmo

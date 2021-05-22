@@ -24,14 +24,14 @@ ForEach-Object {
 }#>
 
 #Dot source all argument completer files for module
-$ArgCompleterFunctionsFiles = [System.IO.Path]::Combine($PSScriptRoot,"Functions","ArgCompleter","*.ps1")
-Get-ChildItem -Path $ArgCompleterFunctionsFiles -Exclude *.tests.ps1, *profile.ps1 |
-ForEach-Object {
-    try {
-        . $_.FullName
-    } catch {
-        # Write-Warning "$($_.Exception.Message)"
-    }
-}
+# $ArgCompleterFunctionsFiles = [System.IO.Path]::Combine($PSScriptRoot,"Functions","ArgCompleter","*.ps1")
+# Get-ChildItem -Path $ArgCompleterFunctionsFiles -Exclude *.tests.ps1, *profile.ps1 |
+# ForEach-Object {
+#     try {
+#         . $_.FullName
+#     } catch {
+#         # Write-Warning "$($_.Exception.Message)"
+#     }
+# }
 
 

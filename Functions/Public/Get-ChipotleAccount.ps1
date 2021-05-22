@@ -4,6 +4,8 @@
 .SYNOPSIS
     Get Chipotle account information given credentials.
 .DESCRIPTION
+.EXAMPLE
+    Some Syntax Here
 .NOTES
     Author: matthewjdegarmo
     GitHub: https://github.com/matthewjdegarmo
@@ -24,5 +26,4 @@ Function Get-ChipotleAccount() {
 
     End {}
 }
-
 #EndRegion Get-ChipotleAccount
