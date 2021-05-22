@@ -69,7 +69,11 @@ Function Confirm-VCSModuleNewerThanPublished() {
 
     Process {
         $script:VCSModuleVersion = (Test-ModuleManifest -Path (Join-Path $script:MyRoot "$script:ModuleName.psd1")).Version
-        $PublishedModuleVersion = (Find-Module -Repository 'PSGallery' -Name $script:ModuleName).Version
+        Try {
+            $PublishedModuleVersion = (Find-Module -Repository 'PSGallery' -Name $script:ModuleName).Version
+        } Catch {
+            $PublishedModuleVersion = "UNPUBLISHED"
+        }
 
         Write-Status Info "Published Version: $PublishedModuleVersion"
         Write-Status Info "VCS Version: $script:VCSModuleVersion"
