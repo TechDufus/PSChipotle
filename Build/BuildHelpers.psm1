@@ -72,7 +72,7 @@ Function Confirm-VCSModuleNewerThanPublished() {
         Try {
             $PublishedModuleVersion = (Find-Module -Repository 'PSGallery' -Name $script:ModuleName).Version
         } Catch {
-            $PublishedModuleVersion = "UNPUBLISHED"
+            $PublishedModuleVersion = "0.0.0"
         }
 
         Write-Status Info "Published Version: $PublishedModuleVersion"
