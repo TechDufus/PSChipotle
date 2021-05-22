@@ -252,7 +252,7 @@ Function Get-LatestChangeLogSection() {
         $VersionHeading = '## v'
         $LatestChangeLogVersion = (($FileContent | Select-String -Pattern $VersionHeading)[0] -Split 'v')[-1]
 
-        #Only grab the latest changelog section if it's actually relevant to the version being published.
+        #Only grab the latest changelog section if its actually relevant to the version being published.
         If ($LatestChangeLogVersion -eq $Version) {
             $TerminateFileContentLine = (($FileContent | Select-String -Pattern $VersionHeading)[1].LineNumber) - 2
             $FileContent[0..$TerminateFileContentLine] | Out-String
@@ -280,8 +280,7 @@ Function Remove-TestResultFiles() {
     Param()
 
     Process {
-        $RepositoryRoot = Split-Path (Split-Path $script:MyRoot -Parent) -Parent
-        $TestXMLFiles = Get-ChildItem (Join-Path $RepositoryRoot '*-Build_testResults.xml')
+        $TestXMLFiles = Get-ChildItem (Join-Path $script:MyRoot '*-Build_testResults.xml')
         If ($TestXMLFiles) {
             $TestXMLFiles | Remove-Item -Force
         }
@@ -292,7 +291,7 @@ Function Remove-TestResultFiles() {
 #Region Environment
 Write-Status Info 'Setting up environment...'
 $script:MyRoot = Split-Path $PSScriptRoot -Parent
-$script:ModuleName = "AdminToolkit"
+$script:ModuleName = "PSChipotle"
 $PesterIsInstalled = Get-Module Pester -ListAvailable
 
 If (-Not($PesterIsInstalled)) {
