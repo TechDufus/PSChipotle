@@ -292,7 +292,7 @@ Function Remove-TestResultFiles() {
 #Region Environment
 Write-Status Info 'Setting up environment...'
 $script:MyRoot = Split-Path $PSScriptRoot -Parent
-$script:ModuleName = "AdminToolkit"
+$script:ModuleName = "PSChipotle"
 $PesterIsInstalled = Get-Module Pester -ListAvailable
 
 If (-Not($PesterIsInstalled)) {
