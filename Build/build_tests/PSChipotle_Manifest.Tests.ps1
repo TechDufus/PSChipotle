@@ -1,9 +1,9 @@
 #Requires -Modules @{ModuleName="Pester";ModuleVersion="5.0.0"}
 
-Describe "Given: AdminToolkit Manifest" {
+Describe "Given: PSChipotle Manifest" {
     Context "When: Manifest is being used" {
         $script:ThisRoot = Split-Path $PSScriptRoot -Parent
-        $ManifestInfo = Test-ModuleManifest -Path ([System.IO.Path]::Combine($script:MyRoot, 'AdminToolkit.psd1'))
+        $ManifestInfo = Test-ModuleManifest -Path ([System.IO.Path]::Combine($script:MyRoot, 'PSChipotle.psd1'))
         $PSDefaultParameterValues = @{
             "It:TestCases" = @{ ManifestInfo = $ManifestInfo }
         }
@@ -28,7 +28,7 @@ Describe "Given: AdminToolkit Manifest" {
         }
         It 'Then: should have the correct RootModule' {
             $RootModule = $ManifestInfo.RootModule
-            $RootModule | Should -Match "AdminToolkit.psm1"
+            $RootModule | Should -Match "PSChipotle.psm1"
         }
     }
 }
