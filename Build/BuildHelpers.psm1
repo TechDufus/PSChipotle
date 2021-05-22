@@ -280,8 +280,7 @@ Function Remove-TestResultFiles() {
     Param()
 
     Process {
-        $RepositoryRoot = Split-Path (Split-Path $script:MyRoot -Parent) -Parent
-        $TestXMLFiles = Get-ChildItem (Join-Path $RepositoryRoot '*-Build_testResults.xml')
+        $TestXMLFiles = Get-ChildItem (Join-Path $script:MyRoot '*-Build_testResults.xml')
         If ($TestXMLFiles) {
             $TestXMLFiles | Remove-Item -Force
         }

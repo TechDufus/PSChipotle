@@ -2,11 +2,13 @@
 
 Describe "Given: PSChipotle Manifest" {
     Context "When: Manifest is being used" {
-        $script:ThisRoot = Split-Path $PSScriptRoot -Parent
-        $ManifestInfo = Test-ModuleManifest -Path ([System.IO.Path]::Combine($script:MyRoot, 'PSChipotle.psd1'))
-        $PSDefaultParameterValues = @{
-            "It:TestCases" = @{ ManifestInfo = $ManifestInfo }
+        BeforeAll {
+            $script:ThisRoot = Split-Path $PSScriptRoot -Parent
+            $ManifestInfo = Test-ModuleManifest -Path ([System.IO.Path]::Combine($script:MyRoot, 'PSChipotle.psd1'))
         }
+        # $PSDefaultParameterValues = @{
+            # "It:TestCases" = @{ ManifestInfo = $ManifestInfo }
+        # }
         It 'Then: should pass Test-ModuleManifest' {
             $ManifestInfo | Should -Be $true
         }
