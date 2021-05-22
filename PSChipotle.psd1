@@ -30,7 +30,7 @@ CompanyName = 'Unknown'
 Copyright = 'Matthew J. DeGarmo'
 
 # Description of the functionality provided by this module
-Description = 'Commands to assist with interracting with Chiporle programatically.'
+Description = 'Commands to assist with interracting with Chipotle programatically.'
 
 # Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
