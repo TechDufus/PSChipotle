@@ -135,9 +135,14 @@ Function Build-Module() {
         Write-Status Info "Functions to build module:"
         $ScriptFunctions
 
+        $ClassPath = Join-Path $ModuleRoot 'Classes' '*.class.ps1'
+        $ClassFiles = @( Get-ChildItem -Path $ClassPath -ErrorAction SilentlyContinue )
+        Write-Status Info "Classes to build module:"
+        $ClassFiles
+
         $null = New-Item -Name "$script:ModuleName" -Path $ModuleBuildPath -ItemType Directory -Force
 
-        foreach ($FilePath in $ScriptFunctions) {
+        foreach ($FilePath in @($ScriptFunctions,$ClassFiles)) {
             $Results = [System.Management.Automation.Language.Parser]::ParseFile($FilePath, [ref]$null, [ref]$null)
             $Functions = $Results.Extent.Text
             Write-Status Info "Adding content from $($FilePath.Name) to module $ModuleTargetFile"
