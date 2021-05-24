@@ -1,8 +1,18 @@
-#Create a class for order objects
+#Region [ChipotleOrder]
 
-Class Order {
-
-    [void] SetOrderId($OrderId) {
-        Add-Member -InputObject $this -Name OrderId -MemberType NoteProperty -Value $OrderId
-    }
+Class ChipotleOrder {
+    
+    #Currently Unknown Type
+    [ValidateNotNullOrEmpty()]
+    $RestaurantID
+    
+    [ValidateNotNullOrEmpty()]
+    [System.String] $MainOrder
+    
+    [ValidateNotNullOrEmpty()]
+    [System.String] $SideOrder
+    
+    [System.String] $BaseURI = 'https://some-url-here.com/order/some/endpoint/v2'
+    [System.String] $URIRequest = "$BaseURI/?$MainOrder&$SideOrder&$RestaurantID"
 }
+#EndRegion [ChipotleOrder]

@@ -1,6 +1,7 @@
+#Region [ChipotleSession]
 
 Class ChipotleSession {
-
+    
     [ValidateNotNullOrEmpty()] 
     [PSCredential] $Credential
     
@@ -15,3 +16,4 @@ Class ChipotleSession {
     [System.String] $URIRequest = "$BaseURI/$($Credential.Username)/$($Credential.GetNetworkPassword)"
     
 }
+#EndRegion [ChipotleSession]
