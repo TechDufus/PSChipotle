@@ -7,10 +7,10 @@ Class ChipotleOrder {
     $RestaurantID
     
     [ValidateNotNullOrEmpty()]
-    [System.String] $MainOrder
+    $MainOrder
     
     [ValidateNotNullOrEmpty()]
-    [System.String] $SideOrder
+    $SideOrder
     
     [System.String] $BaseURI = 'https://some-url-here.com/order/some/endpoint/v2'
     [System.String] $URIRequest = "$BaseURI/?$MainOrder&$SideOrder&$RestaurantID"
