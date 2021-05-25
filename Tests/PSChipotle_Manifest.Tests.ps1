@@ -1,10 +1,10 @@
-#Requires -Modules @{ModuleName="Pester";ModuleVersion="5.0.0"}
+#Requires -Modules @{ModuleName="Pester";ModuleVersion="5.2.0"}
 
 Describe "PSChipotle Manifest Tests" {
-    $ManifestInfo = Test-ModuleManifest -Path ([System.IO.Path]::Combine($PSScriptRoot,'..','PSChipotle.psd1'))
-    $PSDefaultParameterValues = @{
-        "It:TestCases" = @{ ManifestInfo = $ManifestInfo }
+    BeforeAll {
+        $ManifestInfo = Test-ModuleManifest -Path ([System.IO.Path]::Combine($PSScriptRoot,'..','PSChipotle.psd1'))
     }
+
     It 'Passes Test-ModuleManifest' {
         $ManifestInfo | Should -Be $true
     }
