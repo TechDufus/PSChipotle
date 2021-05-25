@@ -334,7 +334,7 @@ Function Remove-TestResultFiles() {
     Param()
 
     Process {
-        $TestXMLFiles = Get-ChildItem (Join-Path $script:MyRoot '*-Build_testResults.xml')
+        $TestXMLFiles = Get-ChildItem (Join-Path $script:MyRoot '*-Build_*.xml')
         If ($TestXMLFiles) {
             $TestXMLFiles | Remove-Item -Force
         }
