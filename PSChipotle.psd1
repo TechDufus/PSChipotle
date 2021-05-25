@@ -57,10 +57,7 @@ Description = 'Commands to assist with interracting with Chipotle programaticall
 # RequiredAssemblies = @()
 
 # Script files (.ps1) that are run in the callers environment prior to importing this module.
-ScriptsToProcess = @(
-    './Classes/ChipotleOrder.class.ps1'
-    './Classes/ChipotleSession.class.ps1'
-)
+# ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
 # TypesToProcess = @()
