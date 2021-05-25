@@ -7,3 +7,6 @@ PowerShell Module to interact with Chipotle.
 [![Downloads](https://img.shields.io/powershellgallery/dt/PSChipotle?label=Downloads)](https://www.powershellgallery.com/packages/PSChipotle/)
 [![License](https://img.shields.io/github/license/matthewjdegarmo/PSChipotle?color=g&label=License)](https://github.com/matthewjdegarmo/PSChipotle/blob/master/LICENSE)
 ![CodeSize](https://img.shields.io/github/languages/code-size/matthewjdegarmo/PSChipotle?label=Code%20Size)
+
+# UNDER CONSTRUCTION
+## Module is published to PowerShell Gallery simply to reserve this Module name until the module is functional.
