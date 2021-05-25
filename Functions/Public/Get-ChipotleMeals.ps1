@@ -4,7 +4,12 @@
 .SYNOPSIS
 
 .DESCRIPTION
-
+.PARAMETER RestaurantId
+    ID for the desired facility.
+.PARAMETER MainOrder
+    ID for the desired facility.
+.PARAMETER SideOrder
+    ID for the desired facility.
 .EXAMPLE
     Some Syntax Here
 .NOTES
@@ -16,13 +21,35 @@
 #>
 Function Get-ChipotleMeals() {
     [CmdletBinding()]
-    Param()
+    Param(
+        $RestaurantId = 8675309,
+
+        $MainOrder = @{
+            Type = 'Burrito'
+            MainMeat = 'Chicken'
+            Accessories = @(
+                'Rice',
+                'Sour Cream',
+                'Cheese'
+            )
+            Addons = @(
+                'Chips&Guac'
+            )
+        },
+
+        $SideOrder = 'Salad'
+    )
 
     Begin {}
 
     Process {
         Try {
 
+            Return [ChipotleOrder]@{
+                RestaurantId = $RestaurantId
+                MainOrder    = $MainOrder
+                SideOrder    = $SideOrder
+            }
         } Catch {
             Throw $_
         }
