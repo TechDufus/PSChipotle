@@ -140,9 +140,11 @@ Function Build-Module() {
         Write-Status Info "Classes to build module:"
         $ClassFiles
 
+        $AllModuleFiles = $ScriptFunctions,$ClassFiles | Get-ChildItem
+
         $null = New-Item -Name "$script:ModuleName" -Path $ModuleBuildPath -ItemType Directory -Force
 
-        foreach ($FilePath in @($ScriptFunctions,$ClassFiles)) {
+        foreach ($FilePath in $AllModuleFiles) {
             $Results = [System.Management.Automation.Language.Parser]::ParseFile($FilePath, [ref]$null, [ref]$null)
             $Functions = $Results.Extent.Text
             Write-Status Info "Adding content from $($FilePath.Name) to module $ModuleTargetFile"
