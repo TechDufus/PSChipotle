@@ -4,7 +4,9 @@
 .SYNOPSIS
 
 .DESCRIPTION
-
+.PARAMETER Credential
+.PARAMETER Session
+.PARAMETER DefaultHeaders
 .EXAMPLE
     Some Syntax Here
 .NOTES
@@ -16,13 +18,24 @@
 #>
 Function New-ChipotleSession() {
     [CmdletBinding()]
-    Param()
+    Param(
+        [PSCredential] $Credential = (New-Object System.Management.Automation.PSCredential ('matthew', $('SomePassword!' | ConvertTo-SecureString -AsPlainText))),
+
+        $Session = '84c9fd56-99a7-452a-bc27-3dd66f60b7e8',
+
+        [System.Object] $DefaultHeaders = (New-Guid | ConvertTo-Json)
+    )
 
     Begin {}
 
     Process {
         Try {
 
+            Return [ChipotleSession]@{
+                Credential = $Credential
+                Session = $Session
+                DefaultHeaders = $DefaultHeaders
+            }
         } Catch {
             Throw $_
         }
