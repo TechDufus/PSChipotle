@@ -102,7 +102,28 @@ Function Start-PreBuildTests() {
         }
         $TestsPath = [System.IO.Path]::Combine($script:MyRoot,'Tests')
 
-        $Result = Invoke-Pester $TestsPath -PassThru -OutputFile 'Pre-Build_testResults.xml' -OutputFormat NUnitXml
+        $PesterConfiguration = [PesterConfiguration]@{
+            Run = @{
+                Path = $TestsPath
+                PassThru = $true
+            }
+            Output = @{
+                Verbosity = 'Detailed'
+            }
+            Should = @{
+                ErrorAction = 'Continue'
+            }
+            CodeCoverage = @{
+                Enable = $true
+                OutputPath = 'Pre-Build_CodeCoverage.xml'
+            }
+            TestResult = @{
+                Enabled = $true
+                OutputPath = 'Pre-Build_testResults.xml'
+            }
+        }
+
+        $Result = Invoke-Pester -Configuration $PesterConfiguration
 
         Switch($Result.Result) {
             'Passed' {
@@ -177,7 +198,29 @@ Function Start-PostBuildTests() {
         Copy-Item @copyItemSplat
 
         Write-Status Info "Starting POST-Build Tests.."
-        $Result = Invoke-Pester (Join-Path $BuildModuleRoot 'build_tests') -PassThru -OutputFile 'Post-Build_testResults.xml' -OutputFormat NUnitXml
+
+        $PesterConfiguration = [PesterConfiguration]@{
+            Run = @{
+                Path = (Join-Path $BuildModuleRoot 'build_tests')
+                PassThru = $true
+            }
+            Output = @{
+                Verbosity = 'Detailed'
+            }
+            Should = @{
+                ErrorAction = 'Continue'
+            }
+            CodeCoverage = @{
+                Enable = $true
+                OutputPath = 'Post-Build_CodeCoverage.xml'
+            }
+            TestResult = @{
+                Enabled = $true
+                OutputPath = 'Post-Build_testResults.xml'
+            }
+        }
+
+        $Result = Invoke-Pester -Configuration $PesterConfiguration
 
         $removeItemSplat = @{
             Force = $true
