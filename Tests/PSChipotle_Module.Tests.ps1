@@ -27,7 +27,6 @@ Describe "PSChipotle Module Public Tests" {
             $PublicImportFailedFunctions = $PublicImportFailedFunctions | Where-Object {$_ -NotIn $script:ExcludedFunctions}
             $PublicImportFailedFunctions | Should -BeNullOrEmpty
         }
-
     }
     Context 'Aliases' {
         It 'should import successfully' {

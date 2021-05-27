@@ -23,7 +23,9 @@ Function New-ChipotleSession() {
 
         $Session = '84c9fd56-99a7-452a-bc27-3dd66f60b7e8',
 
-        [System.Object] $DefaultHeaders = (New-Guid | ConvertTo-Json)
+        [System.Object] $DefaultHeaders = @{
+            'Content-Type' = 'application/JSON'
+        }
     )
 
     Begin {}

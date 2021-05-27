@@ -12,7 +12,7 @@ Class ChipotleOrder {
     [ValidateNotNullOrEmpty()]
     $SideOrder
     
-    [System.String] $BaseURI = 'https://some-url-here.com/order/some/endpoint/v2'
+    [System.String] $BaseURI = 'https://order.chipotle.com/api/restaurant/restaurantssearch'
     [System.String] $URIRequest = "$BaseURI/?$MainOrder&$SideOrder&$RestaurantID"
 }
 #EndRegion [ChipotleOrder]

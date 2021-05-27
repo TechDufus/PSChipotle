@@ -5,7 +5,7 @@ BeforeDiscovery {
                         ) -Parent
                     ) -Parent
     Remove-Module PSChipotle -Force -ErrorAction SilentlyContinue
-    Import-Module $ModuleRoot -Force
+    Import-Module $ModuleRoot -Force -WarningAction SilentlyContinue
 }
 
 Describe "Function Tests: Get-ChipotleMeals" {

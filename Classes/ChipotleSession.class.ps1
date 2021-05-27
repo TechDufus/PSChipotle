@@ -10,10 +10,10 @@ Class ChipotleSession {
     $Session
     
     [ValidateNotNullOrEmpty()]
-    [System.String] $DefaultHeaders
+    [System.Object] $DefaultHeaders
     
-    [System.String] $BaseURI = 'https://some-url-here.com/user/some/endpoint/v2'
-    [System.String] $URIRequest = "$BaseURI/$($Credential.Username)/$($Credential.GetNetworkPassword)"
+    [System.String] $BaseURI = 'https://order.chipotle.com/api/customer/login'
+    [System.String] $URIRequest = "https://order.chipotle.com/api/customer/login"
     
 }
 #EndRegion [ChipotleSession]

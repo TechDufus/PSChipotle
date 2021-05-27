@@ -7,6 +7,8 @@ Param(
 
     [Switch] $DoNotCleanUp,
 
+    [Switch] $SkipVersionCheck,
+
     [Parameter(Mandatory)]
     [System.String] $PSGalleryApiKey
 )
@@ -22,8 +24,8 @@ Process {
     If ($SkipVersionCheck.IsPresent) {
         $IsReadyToBuild = $true
     } Else {
-        $IsReadyToBuild = Confirm-VCSModuleNewerThanPublished -ModuleName $ModuleName
-        If ($IsReadoToBuild) {
+        $IsReadyToBuild = Confirm-VCSModuleNewerThanPublished
+        If ($IsReadyToBuild) {
             Write-Status Info "VCS Version is newer than Published Version."
         }
     }
